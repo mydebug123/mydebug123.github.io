@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    <title>Document</title>
+    <style>
+    *{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: "Microsoft YaHei","Helvetica";
+    box-sizing: border-box;
+}
+body{
+    min-height: 100vh;
+    background-image: linear-gradient(150deg,#f9ca24,#e056fd,#22a6b3,#4834d4,#44bd32,#eb2f06);
+    background-size: 400%;
+    animation: bganimation 18s infinite;
+}
+@keyframes bganimation{
+    0%{
+        background-position: 0% 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0% 50%;
+    }
+}
+
+.login-form{
+    width:360px;
+    height: 580px;
+    background: #f1f1f1;
+    /* background-image: url('/500PX/img/rg.png');
+    background-repeat: no-repeat;
+    background-position:canter; */
+    padding: 80px 40px;
+    border-radius: 15px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+.login-form h1{
+    color:#525558;
+    text-align: center;
+    margin-bottom: 60px;
+}
+.txtb{
+    border-bottom: 2px solid #adadad;
+    position: relative;
+    margin: 30px 0;
+}
+.txtb input{
+    font-size: 15px;
+    columns: #333;
+    border: none;
+    width: 100%;
+    outline: none;
+    background: none;
+    padding: 0 5px;
+    height: 40px;
+}
+.txtb span::before{
+    content: attr(data-placeholder);
+    position: absolute;
+    top:50%;
+    left: 5px;
+    color: #eb2f06;
+    transform: translateY(-50%);
+    z-index: -1;
+    transition: .5s;
+}
+.txtb span::after{
+    content: '';
+    position: absolute;
+    width: 0%;
+    height: 2px;
+    background: linear-gradient(120deg,#f9ca24,#e056fd,#22a6b3,#44bd32,#eb2f06,#0652DD);
+    transition: .5s;
+}
+.focus +span::before{
+    top: -5px;
+}
+.focus+span::after{
+    width: 100%;
+}
+.logbtn{
+    display: block;
+    width: 100%;
+    height: 40px;
+    border: none;
+    color: #fff;
+    background-size: 150%;
+    outline: none;
+    cursor: pointer;
+    transition: .5s;
+    font-size: 18px;
+    background-image: linear-gradient(150deg,#f9ca,#22a6b3,#44bd32);
+}
+.logbtn:hover{
+    background-position: right;
+}
+.bottom-text{
+    margin-top: 60px;
+    text-align: center;
+    font-size: 15px;
+
+}
+    </style>
+</head>
+<body>
+    <form action="login.html" class="login-form">
+        <h1>DeBug.com</h1>
+            <div class="txtb">
+            <input type="text">
+            <span data-placeholder="请输入用户名"></span>
+        </div>
+        <div class="txtb">
+            <input type="password">
+            <span data-placeholder="请输入密码"></span>
+        </div>
+        <input type="submit" class="logbtn" value="登录">
+        <div class="bottom-text">
+            忘记密码/账号问题？<a href="#">点我</a>
+        </div>
+    </form>
+    <script type="text/javascript">
+        $(".txtb input").on("focus",function(){
+            $(this).addClass("focus");
+        });
+        $(".txtb input").on("blur",function(){
+            if($(this).val() == "")
+            $(this).removeClass("focus");
+        });
+    </script>
+</body>
+</html>
